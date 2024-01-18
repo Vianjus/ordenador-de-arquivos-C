@@ -6,16 +6,20 @@
 
 int main (int argc, char* argv[]){
 
+  //Tratamento das entradas de argumentos.
   Argumentos argumentos;
   
-  if(lerEntrada(&argumentos, argc, argv) == false)
-    {
-      printf("O modo de executar o programa esta errado ou algum argumento inserido nao e valido, execute de acordo:\n\n");
-      printf("%s <metodo> <quantidade> <situacao> <chave> [-P|-p]\n", argv[0]);
+  if(lerEntrada(&argumentos, argc, argv) == false){
+    printf("[Erro] -> O modo de executar o programa está errado, execute de acordo:\n");
+    printf("%s <método> <quantidade> <situação> [-P|-p]\n\n", argv[0]);
+    printf("[!] -> Os valores aceitos:\n");
+    printf("Metodos: 1=(2f Fitas)  2=(f+1 Fitas) 3=(QuickSort Ex.)\n");
+    printf("Quantidades: De 1 a 471.705\n");
+    printf("Situação: 1=(Ordenado Ascendente)  2=(Ordenado Descendente)  3=(Desordenado Aleatório)\n");
+    exit(EXIT_FAILURE);
+  }
 
-      exit(1);
-    }
+  printf("\n%s", argumentos.opcional);
 
-  printf("%d %d %d %s", argumentos.metodo, argumentos.quantidade, argumentos.situacao, argumentos.opcional);
   return 0;
 }
